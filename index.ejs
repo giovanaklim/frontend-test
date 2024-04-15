@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="content" lang="pt">
+    <head>
+        <title>Frontend Test</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class="card">
+            <div class="col-left">
+                <div class="card-input">
+                    <label for="qty">Quantity</label>
+                    <input class="input" type="number" name="qty" placeholder="Type here" onkeypress="typeQuantity(event)">
+                </div>
+                <div class="card-bottom-left">
+                    OBJ1
+                </div>
+            </div>
+            <div class="col-right">
+                <div class="list"/>
+                <div class="card-bottom-right">
+                    OBJ3
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    var quantity = 0
+    var items = 0
+    function typeQuantity(event) {
+        this.items = document.getElementsByClassName('item').length
+        if (event.key === 'Enter') {
+            this.quantity = event.target.value
+            if (this.quantity !== this.items){
+                for (let i = 0; i < this.items; i ++){
+                    let itemsRemove = document.getElementsByClassName('item')
+                    itemsRemove[0].remove();
+                }
+            }
+            for (let i = 0; i < this.quantity; i ++){
+                const colList = document.querySelector('.list');
+                const newItem = document.createElement('div');
+                newItem.className = 'item';
+                newItem.innerHTML = `<div class="icon">${i + 1}</div>`;
+                colList.appendChild(newItem);
+            }
+        }
+    }
+</script>
+
+<style>
+    .content{
+        width: 100%;
+        height: 100%;
+        align-content: center;
+        justify-content: center;
+    }
+    .card{
+        background-color: #E6E6E6;
+        display: flex;
+        margin: auto;
+        width: 80%;
+        height: 35rem;
+        position: relative;
+    }
+    .col-left{
+        background-color: #BFBFBF;
+        width: 30%;
+        border: 2px solid #9E9D9B;
+        height: 34.8rem;
+        align-content: center;
+        justify-content: center;
+    }
+    .card-input{
+        display: flex;
+        flex-direction: column;
+        background-color: #AFABAA;
+        height: 4rem;
+        border-top: 2px solid #9E9D9B;
+        border-bottom: 2px solid #9E9D9B;
+        align-content: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    .input{
+        background-color: #CACAC8;
+        border: 2px solid #9E9D9B;
+        width: 5rem;
+        margin: auto;
+    }
+    .card-bottom-left{
+        border-top: 2px solid #9E9D9B;
+        border-right: 2px solid #9E9D9B;
+        width: 3rem;
+        height: 2.5rem;
+        padding: 2px;
+        text-align: center;
+        align-content: center;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    .item{
+        margin-top: 30px;
+        padding: 16px;
+        background-color: #AFABAA;
+        align-content: center;
+        border: 2px solid #9E9D9B;
+        margin-inline: 10px;
+    }
+    .icon{
+        margin-left: 10px;
+        background-color: #CACAC8;
+        border-radius: 2rem;
+        align-content: center;
+        text-align: center;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .col-right{
+        width: 70%;
+        border-top: 2px solid #9E9D9B;
+        border-right: 2px solid #9E9D9B;
+        border-bottom: 2px solid #9E9D9B;
+        position: relative;
+    }
+    .list{
+        overflow-y: auto;
+        max-height: 30rem;
+        width: 100%;
+    }
+    .card-bottom-right{
+        background-color: #BFBFBF;
+        border-top: 2px solid #9E9D9B;
+        border-left: 2px solid #9E9D9B;
+        width: 3rem;
+        height: 2.5rem;
+        padding: 2px;
+        text-align: center;
+        align-content: center;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+</style>
